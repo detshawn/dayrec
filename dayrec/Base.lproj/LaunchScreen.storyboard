@@ -7,12 +7,38 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--add-->
+        <scene sceneID="2tc-30-NBy">
+            <objects>
+                <viewController id="vhi-eJ-9Fq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bA8-6A-725">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNi-Ok-rRL">
+                                <rect key="frame" x="100" y="171" width="214" height="554"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="body"/>
+                                <connections>
+                                    <segue destination="ebj-GQ-thm" kind="show" id="ds7-aK-Rfw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="MSZ-zZ-nC3"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="add" image="plus" catalog="system" id="XPg-0p-mLC"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LKs-B8-RXo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="855.07246376811599" y="-581.25"/>
+        </scene>
         <!--운동 기록-->
         <scene sceneID="mA5-xH-cCS">
             <objects>
                 <tableViewController id="Ce5-NC-n44" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OgJ-MX-6i1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -64,9 +90,14 @@
             <objects>
                 <navigationController id="ebj-GQ-thm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="add" image="plus" catalog="system" id="xHt-ZH-QA7"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S0j-xk-4Fu">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationItem key="navigationItem" id="weL-KV-C0M"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="arrowtriangle.left" catalog="system" id="S0j-xk-4Fu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0089245336936002052" blue="0.044871275906735786" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="Ce5-NC-n44" kind="relationship" relationship="rootViewController" id="UUQ-bo-EVs"/>
@@ -118,7 +149,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ebj-GQ-thm" kind="relationship" relationship="viewControllers" id="xw2-pT-tbz"/>
+                        <segue destination="vhi-eJ-9Fq" kind="relationship" relationship="viewControllers" id="CGX-Np-k4y"/>
                         <segue destination="TCQ-hP-cdF" kind="relationship" relationship="viewControllers" id="Xtt-32-HZx"/>
                         <segue destination="W9K-Vl-eRV" kind="relationship" relationship="viewControllers" id="Y8q-1s-sIf"/>
                     </connections>
@@ -129,6 +160,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowtriangle.left" catalog="system" width="128" height="113"/>
+        <image name="body" width="492" height="1406"/>
         <image name="chart.bar.fill" catalog="system" width="128" height="89"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.stack.3d.up.fill" catalog="system" width="128" height="124"/>
