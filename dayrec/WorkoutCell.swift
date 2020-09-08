@@ -9,7 +9,9 @@
 import UIKit
 
 class WorkoutCell: UITableViewCell {
-
+    @IBOutlet var workoutName: UILabel!
+    @IBOutlet var partTag: UILabel!
+    @IBOutlet var regdate: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

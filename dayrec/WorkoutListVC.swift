@@ -9,6 +9,8 @@
 import UIKit
 
 class WorkoutListVC: UITableViewController {
+    // 앱 델리게이트 참조 정보를 가져옴
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,19 +21,52 @@ class WorkoutListVC: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    //  뷰가 화면에 출력되면 호출
+    override func viewWillAppear(_ animated: Bool) {
+        // 테이블 데이터 리로드
+        self.tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.appDelegate.workoutList.count
     }
 
+    // 개별 행을 구성하는 메서드
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // workoutList 배열에서 주어진 행에 맞는 데이터를 꺼냄
+        let row = self.appDelegate.workoutList[indexPath.row]
+        
+        // 이미지 속성이 비어 있고 없고에 따라 프로토타입 셀 식별자를 변경
+        let cellId = "workoutCell"
+        
+        // 재사용 큐로부터 프로토타입 셀의 인스턴스를 전달 받음
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! WorkoutCell
+
+        // 내용 구성
+        cell.workoutName?.text = row.workoutName
+        cell.partTag?.text = row.partTag
+        
+        // Date 타입의 날짜를 포멧에 맞게 변경
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        cell.regdate?.text = formatter.string(from: row.regdate!)
+
+        return cell
+    }
+    
+    // 테이블 행을 선택하면 호출되는 메서드
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

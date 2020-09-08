@@ -52,7 +52,6 @@
 		03901E3825061E93006C55B2 = {
 			isa = PBXGroup;
 			children = (
-				03901E6B25073583006C55B2 /* WorkoutListVC.swift */,
 				03901E4325061E93006C55B2 /* dayrec */,
 				03901E4225061E93006C55B2 /* Products */,
 			);
@@ -70,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				03901E4425061E93006C55B2 /* AppDelegate.swift */,
+				03901E6B25073583006C55B2 /* WorkoutListVC.swift */,
 				03901E6D250735F8006C55B2 /* WorkoutData.swift */,
 				03901E4625061E93006C55B2 /* SceneDelegate.swift */,
 				03901E5D25061FB0006C55B2 /* MainViewController.swift */,

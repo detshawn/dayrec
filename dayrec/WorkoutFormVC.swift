@@ -39,7 +39,7 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate {
     }
     */
     
-    // Save utton
+    // Save button
     @IBAction func save(_ sender: Any) {
         // 내용을 입력하지 않은경우 경고
         guard self.contents.text?.isEmpty == false else {
@@ -52,9 +52,9 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate {
         // MemoData 객체를 생성하고 데이터를 담음
         let data = WorkoutData()
         
-        data.name = self.subject                       // 제목
+        data.workoutName = self.subject                       // 제목
         data.contents = self.contents.text    // 내용
-//        data.tag = self.      // 태그
+        data.partTag = ""      // 태그
         data.regdate = Date()                        // 작성 시각
         
         // 앱 델리개이트 객체를 읽어온 다음 memolist 배열에 MemoData 객체를 추가
