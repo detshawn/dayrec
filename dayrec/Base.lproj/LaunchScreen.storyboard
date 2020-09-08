@@ -157,8 +157,14 @@
                     <navigationItem key="navigationItem" title="상세 작성" id="T8X-9I-MLC">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="ZgS-tN-Ack">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="save:" destination="u7e-6D-5zg" id="3fQ-jP-iGL"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contents" destination="SQ9-Gr-7hx" id="zAf-C4-KNt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q0W-nS-3TX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
