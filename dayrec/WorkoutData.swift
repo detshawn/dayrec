@@ -11,7 +11,7 @@ import Foundation
 class WorkoutData {
     var workoutIdx: Int?        // 데이터 식별값
     var workoutName: String?           // 운동 종류
-    var partTag: String?           // 운동 부위
+    var workoutTag: String?           // 운동 부위
     var regdate: Date?          // 작성일
     var contents: String?       // 메모 내용
 }

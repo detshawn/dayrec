@@ -52,7 +52,7 @@ class WorkoutListVC: UITableViewController {
 
         // 내용 구성
         cell.workoutName?.text = row.workoutName
-        cell.partTag?.text = row.partTag
+        cell.workoutTag?.text = row.workoutTag
         
         // Date 타입의 날짜를 포멧에 맞게 변경
         let formatter = DateFormatter()
