@@ -7,15 +7,24 @@
 //
 
 import UIKit
+import TagListView
 
-class WorkoutFormVC: UIViewController, UITextViewDelegate {
+class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
     
     @IBOutlet var name: UITextView!
     @IBOutlet var contents: UITextView!
+    @IBOutlet var tagSelectedListView: TagListView!
+    @IBOutlet var tagAllListView: TagListView!
+    
+    let systemTagColor = UIColor.systemGreen
     
     override func viewDidLoad() {
         self.name.delegate = self
         self.contents.delegate = self
+        self.tagSelectedListView.delegate = self
+        self.tagAllListView.delegate = self
+        
+        self.tagAllListView.addTags(["chest", "core", "back", "legs", "shoulders", "triceps", "biceps"])
     }
     
     // MARK:- UITextViewDelegate
@@ -26,6 +35,29 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate {
             self.navigationItem.title = textView.text
         } else {
             // handle other text views
+            return
+        }
+    }
+    
+    // MARK:- TagListViewDelegate
+    func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        print("Tag pressed: \(title), \(sender)")
+        if sender === self.tagSelectedListView {
+            print("Tag removed: \(title), \(sender)")
+            self.tagSelectedListView.removeTag(title)
+            self.tagAllListView.removeTag(title)
+            let restoredTagView = self.tagAllListView.addTag(title)
+            restoredTagView.tagBackgroundColor = self.systemTagColor
+        } else if sender === self.tagAllListView {
+            if !self.tagSelectedListView.tagViews.map({$0.titleLabel?.text}).contains(title) {
+                print("Tag added: \(title), \(sender)")
+                self.tagSelectedListView.addTag(title)
+                tagView.tagBackgroundColor = UIColor.darkGray
+                tagView.onTap = { tagView in
+                    print("Don’t tap me!")
+                }
+            }
+        } else {
             return
         }
     }
@@ -63,7 +95,7 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate {
         let data = WorkoutData()
         
         data.workoutName = self.name.text     // 제목
-        data.workoutTag = ""                  // 태그
+        data.workoutTags = self.tagSelectedListView.tagViews.map({$0.titleLabel?.text as! String})  // 태그
         data.contents = self.contents.text    // 내용
         data.regdate = Date()                 // 작성 시각
         

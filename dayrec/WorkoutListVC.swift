@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TagListView
 
 class WorkoutListVC: UITableViewController {
     // 앱 델리게이트 참조 정보를 가져옴
@@ -52,7 +53,7 @@ class WorkoutListVC: UITableViewController {
 
         // 내용 구성
         cell.workoutName?.text = row.workoutName
-        cell.workoutTag?.text = row.workoutTag
+        cell.workoutTags?.addTags(row.workoutTags!)
         
         // Date 타입의 날짜를 포멧에 맞게 변경
         let formatter = DateFormatter()

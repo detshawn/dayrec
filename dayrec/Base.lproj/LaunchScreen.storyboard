@@ -56,17 +56,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="383" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IYT-9M-tQF">
-                                            <rect key="frame" x="201" y="30" width="60" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="cwR-Z4-uuV"/>
-                                                <constraint firstAttribute="width" constant="60" id="p8v-NZ-Ibe"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Dv-pR-JPg">
                                             <rect key="frame" x="30" y="15" width="142" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
@@ -88,17 +77,20 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c6d-PE-mia" customClass="TagListView" customModule="TagListView">
+                                            <rect key="frame" x="180" y="17" width="81" height="52"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="IYT-9M-tQF" firstAttribute="leading" secondItem="6Dv-pR-JPg" secondAttribute="trailing" constant="10" id="3d2-St-hrI"/>
                                         <constraint firstItem="6Dv-pR-JPg" firstAttribute="leading" secondItem="chq-sj-ToS" secondAttribute="leadingMargin" constant="10" id="44n-Iy-j7w"/>
-                                        <constraint firstItem="Gii-1f-sLQ" firstAttribute="leading" secondItem="IYT-9M-tQF" secondAttribute="trailing" constant="10" id="icG-fy-HJ2"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="regdate" destination="Gii-1f-sLQ" id="90m-gb-skR"/>
                                     <outlet property="workoutName" destination="6Dv-pR-JPg" id="LEx-Bv-KQn"/>
-                                    <outlet property="workoutTag" destination="IYT-9M-tQF" id="ZKA-ib-Ld8"/>
+                                    <outlet property="workoutTags" destination="c6d-PE-mia" id="HBj-3V-6yI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -114,7 +106,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLG-Et-75S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3487" y="-666"/>
+            <point key="canvasLocation" x="3486.9565217391305" y="-666.29464285714278"/>
         </scene>
         <!--Workout ReadVC-->
         <scene sceneID="ysV-eT-ezf">
@@ -138,6 +130,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bW9-ql-8Wa" customClass="TagListView" customModule="TagListView">
+                                <rect key="frame" x="269" y="95" width="125" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Z0O-Tc-pa0"/>
@@ -146,11 +143,12 @@
                     <connections>
                         <outlet property="contents" destination="YXp-Xj-xf3" id="5nZ-0f-qzp"/>
                         <outlet property="subject" destination="IDc-Cw-t6H" id="QHB-P9-4na"/>
+                        <outlet property="workoutTags" destination="bW9-ql-8Wa" id="wDH-ZL-uMC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xUb-Et-fqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4419" y="-232"/>
+            <point key="canvasLocation" x="4418.840579710145" y="-232.36607142857142"/>
         </scene>
         <!--상세 작성-->
         <scene sceneID="7WY-Ch-3kb">
@@ -197,6 +195,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="98g-Ja-nMw" customClass="TagListView" customModule="TagListView">
+                                <rect key="frame" x="20" y="440" width="374" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FQg-TI-GMm" customClass="TagListView" customModule="TagListView">
+                                <rect key="frame" x="20" y="567" width="374" height="118"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="tagBackgroundColor">
+                                        <color key="value" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
+                                        <color key="value" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="tagSelectedBackgroundColor">
+                                        <color key="value" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Zcw-Ot-Fc3"/>
@@ -212,6 +233,8 @@
                     <connections>
                         <outlet property="contents" destination="SQ9-Gr-7hx" id="zAf-C4-KNt"/>
                         <outlet property="name" destination="qKe-O1-kWL" id="bm7-dq-ilb"/>
+                        <outlet property="tagAllListView" destination="FQg-TI-GMm" id="7Ga-1L-CCu"/>
+                        <outlet property="tagSelectedListView" destination="98g-Ja-nMw" id="am7-pp-p4C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q0W-nS-3TX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

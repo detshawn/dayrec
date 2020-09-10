@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TagListView
 
 class WorkoutReadVC: UIViewController {
     
@@ -14,10 +15,12 @@ class WorkoutReadVC: UIViewController {
 
     @IBOutlet var subject: UILabel!
     @IBOutlet var contents: UILabel!
+    @IBOutlet var workoutTags: TagListView!
     
     override func viewDidLoad() {
         self.subject.text = param?.workoutName
         self.contents.text = param?.contents
+        self.workoutTags.addTags((param?.workoutTags)!)
 
         // 날짜 포멧 변환
         let formatter = DateFormatter()

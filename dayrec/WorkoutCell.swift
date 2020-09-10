@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import TagListView
 
 class WorkoutCell: UITableViewCell {
     @IBOutlet var workoutName: UILabel!
-    @IBOutlet var workoutTag: UILabel!
+    @IBOutlet var workoutTags: TagListView!
     @IBOutlet var regdate: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
