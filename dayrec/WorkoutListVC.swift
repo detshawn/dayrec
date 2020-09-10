@@ -64,7 +64,17 @@ class WorkoutListVC: UITableViewController {
     
     // 테이블 행을 선택하면 호출되는 메서드
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // workoutList 에서 선택된 행에 맞는 데이터를 꺼냄
+        let row = self.appDelegate.workoutList[indexPath.row]
         
+        // 상세 화면 인스턴스 생성
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "WorkoutRead") as? WorkoutReadVC else {
+            return
+        }
+        
+        // 값을 전달한 다음 상세 화면으로 이동
+        vc.param = row
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     /*

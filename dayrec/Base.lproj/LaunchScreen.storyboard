@@ -99,7 +99,6 @@
                                     <outlet property="partTag" destination="IYT-9M-tQF" id="uCU-yK-WcH"/>
                                     <outlet property="regdate" destination="Gii-1f-sLQ" id="90m-gb-skR"/>
                                     <outlet property="workoutName" destination="6Dv-pR-JPg" id="LEx-Bv-KQn"/>
-                                    <segue destination="mh3-7J-j3B" kind="show" identifier="read_sg" id="gys-gU-DMI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -120,7 +119,7 @@
         <!--Workout ReadVC-->
         <scene sceneID="ysV-eT-ezf">
             <objects>
-                <viewController storyboardIdentifier="WorkoutRead" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mh3-7J-j3B" customClass="WorkoutReadVC" customModule="dayrec" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WorkoutRead" id="mh3-7J-j3B" customClass="WorkoutReadVC" customModule="dayrec" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nOU-Ly-hOt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,12 +145,12 @@
                     <navigationItem key="navigationItem" id="CFh-A6-dU7"/>
                     <connections>
                         <outlet property="contents" destination="YXp-Xj-xf3" id="5nZ-0f-qzp"/>
-                        <outlet property="suject" destination="IDc-Cw-t6H" id="Wb6-GD-ulL"/>
+                        <outlet property="subject" destination="IDc-Cw-t6H" id="QHB-P9-4na"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xUb-Et-fqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4419" y="-237"/>
+            <point key="canvasLocation" x="4419" y="-232"/>
         </scene>
         <!--상세 작성-->
         <scene sceneID="7WY-Ch-3kb">

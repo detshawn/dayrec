@@ -9,11 +9,23 @@
 import UIKit
 
 class WorkoutReadVC: UIViewController {
+    
+    var param: WorkoutData?
 
+    @IBOutlet var subject: UILabel!
+    @IBOutlet var contents: UILabel!
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
+        self.subject.text = param?.workoutName
+        self.contents.text = param?.contents
 
-        // Do any additional setup after loading the view.
+        // 날짜 포멧 변환
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM월 dd일 HH시 mm분에 작성"
+        let dateString = formatter.string(from: (param?.regdate)!)
+
+        // 내비게이션 타이틀에 날짜 표시
+        self.navigationItem.title = dateString
     }
     
 
