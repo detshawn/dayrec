@@ -7,54 +7,46 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--add-->
+        <!--월간 기록-->
         <scene sceneID="2tc-30-NBy">
             <objects>
-                <viewController id="vhi-eJ-9Fq" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vhi-eJ-9Fq" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bA8-6A-725">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNi-Ok-rRL">
-                                <rect key="frame" x="60" y="94" width="178" height="462"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="SNi-Ok-rRL" secondAttribute="height" multiplier="89:231" id="Dyd-Zh-yJ7"/>
-                                    <constraint firstAttribute="width" secondItem="SNi-Ok-rRL" secondAttribute="height" multiplier="89:231" id="b3C-7R-E5L"/>
-                                    <constraint firstAttribute="width" constant="178" id="cwG-ld-35e"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="body"/>
-                                <connections>
-                                    <segue destination="ebj-GQ-thm" kind="show" id="ds7-aK-Rfw"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="0.96899682830998435" green="0.98724902849740936" blue="0.48925422111356104" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstItem="SNi-Ok-rRL" firstAttribute="leading" secondItem="MSZ-zZ-nC3" secondAttribute="leading" constant="58" id="QgF-qM-DFF"/>
-                            <constraint firstItem="SNi-Ok-rRL" firstAttribute="leading" secondItem="MSZ-zZ-nC3" secondAttribute="leading" constant="60" id="VjD-qH-qLK"/>
-                            <constraint firstItem="SNi-Ok-rRL" firstAttribute="top" secondItem="MSZ-zZ-nC3" secondAttribute="top" constant="42" id="ck8-AQ-JpX"/>
-                            <constraint firstItem="SNi-Ok-rRL" firstAttribute="top" secondItem="MSZ-zZ-nC3" secondAttribute="top" constant="50" id="crB-Io-aae"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MSZ-zZ-nC3"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="add" image="plus" catalog="system" id="XPg-0p-mLC"/>
+                    <navigationItem key="navigationItem" title="월간 기록" id="GxL-jq-Hpu"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKs-B8-RXo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="855.07246376811599" y="-581.25"/>
+            <point key="canvasLocation" x="3487" y="7"/>
+        </scene>
+        <!--add-->
+        <scene sceneID="Pu5-YU-v74">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="DxJ-E8-egC" customClass="AddPageVC" customModule="dayrec" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="add" image="plus" catalog="system" id="hMG-vH-aOq"/>
+                    <navigationItem key="navigationItem" id="g0q-Q7-iZU"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OH7-e1-YS7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1648" y="-665"/>
         </scene>
         <!--운동 기록-->
         <scene sceneID="mA5-xH-cCS">
             <objects>
-                <tableViewController id="Ce5-NC-n44" customClass="WorkoutListVC" customModule="dayrec" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ce5-NC-n44" customClass="WorkoutListVC" customModule="dayrec" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OgJ-MX-6i1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.92676968459999998" green="0.93863341970000003" blue="0.4654598116" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="sectionIndexBackgroundColor" red="0.92676968459999998" green="0.93863341970000003" blue="0.4654598116" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="jKd-XK-rXh">
                             <rect key="frame" x="0.0" y="136" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="workoutCell" rowHeight="80" id="dbb-ZK-E00" customClass="WorkoutCell" customModule="dayrec" customModuleProvider="target">
@@ -111,14 +103,10 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Ce5-NC-n44" id="Q6a-da-jP2"/>
-                            <outlet property="delegate" destination="Ce5-NC-n44" id="3Bb-no-njo"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="운동 기록" id="3k3-ai-syW">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Yyx-BV-nQH">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="u7e-6D-5zg" kind="show" id="Gb7-3h-H3a"/>
                             </connections>
@@ -127,14 +115,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLG-Et-75S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2566.666666666667" y="-581.25"/>
+            <point key="canvasLocation" x="3487" y="-666"/>
         </scene>
         <!--Workout ReadVC-->
         <scene sceneID="ysV-eT-ezf">
             <objects>
-                <viewController id="mh3-7J-j3B" customClass="WorkoutReadVC" customModule="dayrec" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WorkoutRead" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mh3-7J-j3B" customClass="WorkoutReadVC" customModule="dayrec" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nOU-Ly-hOt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDc-Cw-t6H">
@@ -151,33 +139,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2020-09-07" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kK-Sv-puX">
-                                <rect key="frame" x="292" y="95" width="102" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Z0O-Tc-pa0"/>
                     </view>
                     <navigationItem key="navigationItem" id="CFh-A6-dU7"/>
+                    <connections>
+                        <outlet property="contents" destination="YXp-Xj-xf3" id="5nZ-0f-qzp"/>
+                        <outlet property="suject" destination="IDc-Cw-t6H" id="Wb6-GD-ulL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xUb-Et-fqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3498.5507246376815" y="-153.34821428571428"/>
+            <point key="canvasLocation" x="4419" y="-237"/>
         </scene>
         <!--상세 작성-->
         <scene sceneID="7WY-Ch-3kb">
             <objects>
                 <viewController id="u7e-6D-5zg" customClass="WorkoutFormVC" customModule="dayrec" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R68-S5-uFs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SQ9-Gr-7hx">
-                                <rect key="frame" x="20" y="79" width="374" height="365"/>
+                                <rect key="frame" x="20" y="79" width="374" height="419"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" red="0.47698753238341973" green="0.47698753238341973" blue="0.47698753238341973" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -190,7 +175,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="상세 작성" id="T8X-9I-MLC">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="ZgS-tN-Ack">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="save:" destination="u7e-6D-5zg" id="ogf-cC-eYT"/>
                             </connections>
@@ -202,29 +187,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q0W-nS-3TX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3498.5507246376815" y="-802.23214285714278"/>
+            <point key="canvasLocation" x="4419" y="-887"/>
         </scene>
         <!--add-->
         <scene sceneID="ilP-IM-dia">
             <objects>
-                <navigationController id="ebj-GQ-thm" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ListNavVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ebj-GQ-thm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="add" image="plus" catalog="system" id="xHt-ZH-QA7"/>
                     <navigationItem key="navigationItem" id="weL-KV-C0M"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="arrowtriangle.left" catalog="system" id="S0j-xk-4Fu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.0089245336936002052" blue="0.044871275906735786" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="Ce5-NC-n44" kind="relationship" relationship="rootViewController" id="UUQ-bo-EVs"/>
+                        <segue destination="Ce5-NC-n44" kind="relationship" relationship="rootViewController" id="id9-9p-mby"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9m-4p-EIx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1648" y="-581"/>
+            <point key="canvasLocation" x="2578" y="-666"/>
         </scene>
         <!--graph-->
         <scene sceneID="9AL-st-9mo">
@@ -258,6 +243,23 @@
             </objects>
             <point key="canvasLocation" x="1648" y="52"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oeP-hA-Hs0">
+            <objects>
+                <navigationController useStoryboardIdentifierAsRestorationIdentifier="YES" id="axT-c5-Zlj" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zPr-6p-hpb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vhi-eJ-9Fq" kind="relationship" relationship="rootViewController" id="KvL-2a-NNL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OnW-s3-bdx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2577" y="7"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="VVo-mS-OkO">
             <objects>
@@ -268,9 +270,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="TCQ-hP-cdF" kind="relationship" relationship="viewControllers" id="Xtt-32-HZx"/>
-                        <segue destination="vhi-eJ-9Fq" kind="relationship" relationship="viewControllers" id="CGX-Np-k4y"/>
+                        <segue destination="DxJ-E8-egC" kind="relationship" relationship="viewControllers" id="ijW-4r-0GX"/>
                         <segue destination="W9K-Vl-eRV" kind="relationship" relationship="viewControllers" id="Y8q-1s-sIf"/>
+                        <segue destination="TCQ-hP-cdF" kind="relationship" relationship="viewControllers" id="Xtt-32-HZx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wgH-cy-vtr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -280,7 +282,6 @@
     </scenes>
     <resources>
         <image name="arrowtriangle.left" catalog="system" width="128" height="113"/>
-        <image name="body" width="492" height="1406"/>
         <image name="chart.bar.fill" catalog="system" width="128" height="89"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.stack.3d.up.fill" catalog="system" width="128" height="124"/>

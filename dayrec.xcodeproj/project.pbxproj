@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		033A966F2509F3A000A04CD2 /* AddPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033A966E2509F3A000A04CD2 /* AddPageVC.swift */; };
 		03901E4525061E93006C55B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03901E4425061E93006C55B2 /* AppDelegate.swift */; };
 		03901E4725061E93006C55B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03901E4625061E93006C55B2 /* SceneDelegate.swift */; };
 		03901E4A25061E93006C55B2 /* dayrec.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03901E4825061E93006C55B2 /* dayrec.xcdatamodeld */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		033A966E2509F3A000A04CD2 /* AddPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageVC.swift; sourceTree = "<group>"; };
 		03901E4125061E93006C55B2 /* dayrec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dayrec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03901E4425061E93006C55B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03901E4625061E93006C55B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				03901E5D25061FB0006C55B2 /* MainViewController.swift */,
 				03901E4D25061E96006C55B2 /* Assets.xcassets */,
 				03901E5225061E96006C55B2 /* LaunchScreen.storyboard */,
+				033A966E2509F3A000A04CD2 /* AddPageVC.swift */,
 				03901E6925073521006C55B2 /* WorkoutCell.swift */,
 				03901E652507349C006C55B2 /* WorkoutFormVC.swift */,
 				03901E6325073488006C55B2 /* WorkoutReadVC.swift */,
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03901E6425073488006C55B2 /* WorkoutReadVC.swift in Sources */,
+				033A966F2509F3A000A04CD2 /* AddPageVC.swift in Sources */,
 				03901E4525061E93006C55B2 /* AppDelegate.swift in Sources */,
 				03901E4725061E93006C55B2 /* SceneDelegate.swift in Sources */,
 				03901E4A25061E93006C55B2 /* dayrec.xcdatamodeld in Sources */,
