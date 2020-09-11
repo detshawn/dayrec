@@ -95,35 +95,38 @@ class WorkoutListVC: UITableViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
-
-        return cell
+    // MARK: - delete a cell
+    private func delete(object: NSManagedObject) -> Bool {
+        // 관리 객체 컨텍스트 참조
+        let context = self.appDelegate.persistentContainer.viewContext
+        // 컨텍스트로부터 해당 객체 삭제
+        context.delete(object)
+        
+        // 영구 저장소에 커밋
+        do {
+            try context.save()
+            return true
+        } catch {
+            context.rollback()
+            return false
+        }
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
     }
-    */
-
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        let object = self.appDelegate.workoutList[indexPath.row]
+        
+        if self.delete(object: object) {
+            // 코어 데이터에서 삭제되면 배열 목록과 테이블 뷰의 행도 삭제
+            self.appDelegate.workoutList.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.
