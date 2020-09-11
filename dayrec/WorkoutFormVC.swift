@@ -104,8 +104,8 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
         // 영구 저장소에 커밋되고 나면 list 프로퍼티에 추가
         do {
             try context.save()
-            appDelegate.workoutList.append(object)
-            
+//            appDelegate.workoutList.append(object)
+            appDelegate.workoutList.insert(object, at: 0) // in order to put it in the first row of TableView
             // 작성폼 화면을 종료하고 이전 화면으로 돌아감
             self.navigationController?.popViewController(animated: true)
             

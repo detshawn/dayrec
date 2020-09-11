@@ -73,6 +73,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let context = self.persistentContainer.viewContext
         // 요청 객체 생성
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Board")
+        
+        // 정렬 속성 설정
+        let sort = NSSortDescriptor(key: "regdate", ascending: false)
+        fetchRequest.sortDescriptors = [sort]
+        
         // 데이터 가져오기
         let result = try! context.fetch(fetchRequest)
         return result
