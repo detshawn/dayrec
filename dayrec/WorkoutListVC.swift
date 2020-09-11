@@ -53,6 +53,7 @@ class WorkoutListVC: UITableViewController {
 
         // 내용 구성
         cell.workoutName?.text = row.workoutName
+        cell.workoutTags?.removeAllTags() // is it the best way?..
         cell.workoutTags?.addTags(row.workoutTags!)
         
         // Date 타입의 날짜를 포멧에 맞게 변경
