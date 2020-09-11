@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import CoreData
 import TagListView
 
 class WorkoutListVC: UITableViewController {
     // 앱 델리게이트 참조 정보를 가져옴
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,7 +29,7 @@ class WorkoutListVC: UITableViewController {
         // 테이블 데이터 리로드
         self.tableView.reloadData()
     }
-
+    
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,11 +41,26 @@ class WorkoutListVC: UITableViewController {
         return self.appDelegate.workoutList.count
     }
 
+    private func fromCoreToWorkoutData(record: NSManagedObject) -> WorkoutData {
+        // MemoData 객체를 생성하고 데이터를 담음
+        let data = WorkoutData()
+
+        // 데이터 가져오기
+        data.workoutName = record.value(forKey: "workoutName") as? String
+        let workoutTagsAsString = record.value(forKey: "workoutTags") as? String
+        let stringAsData = workoutTagsAsString!.data(using: String.Encoding.utf16)
+        data.workoutTags = try! JSONDecoder().decode([String].self, from: stringAsData!)
+        data.contents = record.value(forKey: "contents") as? String
+        data.regdate = record.value(forKey: "regdate") as? Date
+
+        return data
+    }
+    
     // 개별 행을 구성하는 메서드
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // workoutList 배열에서 주어진 행에 맞는 데이터를 꺼냄
-        let row = self.appDelegate.workoutList[indexPath.row]
-        
+        let row = self.fromCoreToWorkoutData(record: self.appDelegate.workoutList[indexPath.row])
+                
         // 이미지 속성이 비어 있고 없고에 따라 프로토타입 셀 식별자를 변경
         let cellId = "workoutCell"
         
@@ -67,7 +83,7 @@ class WorkoutListVC: UITableViewController {
     // 테이블 행을 선택하면 호출되는 메서드
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // workoutList 에서 선택된 행에 맞는 데이터를 꺼냄
-        let row = self.appDelegate.workoutList[indexPath.row]
+        let row = self.fromCoreToWorkoutData(record: self.appDelegate.workoutList[indexPath.row])
         
         // 상세 화면 인스턴스 생성
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "WorkoutRead") as? WorkoutReadVC else {

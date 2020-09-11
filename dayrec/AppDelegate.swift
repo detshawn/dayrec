@@ -12,8 +12,11 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    // MARK: - Core Data Structure
-    var workoutList = [WorkoutData]()
+    // MARK: - Core Data list
+//    var workoutList = [WorkoutData]()
+    lazy var workoutList: [NSManagedObject] = {
+        return self.fetch()
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -35,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Core Data stack
-
+    
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -62,6 +65,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
+    
+    // MARK: - Core Data fetch handling
+    
+    func fetch() -> [NSManagedObject] {
+        // 관리 객체 컨텍스트 참조
+        let context = self.persistentContainer.viewContext
+        // 요청 객체 생성
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Board")
+        // 데이터 가져오기
+        let result = try! context.fetch(fetchRequest)
+        return result
+    }
+
 
     // MARK: - Core Data Saving support
 
@@ -78,6 +94,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
-
