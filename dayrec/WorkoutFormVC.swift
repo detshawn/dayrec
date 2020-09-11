@@ -25,6 +25,8 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
         self.tagAllListView.delegate = self
         
         self.tagAllListView.addTags(["chest", "core", "back", "legs", "shoulders", "triceps", "biceps"])
+        
+        self.name.becomeFirstResponder()
     }
     
     // MARK:- UITextViewDelegate
