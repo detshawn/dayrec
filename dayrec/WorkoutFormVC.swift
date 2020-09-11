@@ -45,18 +45,11 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
         if sender === self.tagSelectedListView {
             print("Tag removed: \(title), \(sender)")
             self.tagSelectedListView.removeTag(title)
-            self.tagAllListView.removeTag(title)
-            let restoredTagView = self.tagAllListView.addTag(title)
-            restoredTagView.tagBackgroundColor = self.systemTagColor
+            self.tagAllListView.addTag(title)
         } else if sender === self.tagAllListView {
-            if !self.tagSelectedListView.tagViews.map({$0.titleLabel?.text}).contains(title) {
-                print("Tag added: \(title), \(sender)")
-                self.tagSelectedListView.addTag(title)
-                tagView.tagBackgroundColor = UIColor.darkGray
-                tagView.onTap = { tagView in
-                    print("Don’t tap me!")
-                }
-            }
+            print("Tag added: \(title), \(sender)")
+            self.tagSelectedListView.addTag(title)
+            self.tagAllListView.removeTag(title)
         } else {
             return
         }
