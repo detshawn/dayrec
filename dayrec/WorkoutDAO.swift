@@ -86,6 +86,8 @@ class WorkoutDAO {
         data.contents = record.contents
         data.regdate = record.regdate
         
+        data.objectID = record.objectID
+        
         return data
     }
 }
