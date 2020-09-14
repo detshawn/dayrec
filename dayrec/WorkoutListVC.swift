@@ -26,7 +26,10 @@ class WorkoutListVC: UITableViewController {
     
     //  뷰가 화면에 출력되면 호출
     override func viewWillAppear(_ animated: Bool) {
-        // 테이블 데이터 리로드
+        // load the data from CoreData
+        self.appDelegate.workoutList = self.appDelegate.dao.fetch()
+        
+        // reload the table data
         self.tableView.reloadData()
     }
     
@@ -41,25 +44,10 @@ class WorkoutListVC: UITableViewController {
         return self.appDelegate.workoutList.count
     }
 
-    private func fromCoreToWorkoutData(record: NSManagedObject) -> WorkoutData {
-        // MemoData 객체를 생성하고 데이터를 담음
-        let data = WorkoutData()
-
-        // 데이터 가져오기
-        data.workoutName = record.value(forKey: "workoutName") as? String
-        let workoutTagsAsString = record.value(forKey: "workoutTags") as? String
-        let stringAsData = workoutTagsAsString!.data(using: String.Encoding.utf16)
-        data.workoutTags = try! JSONDecoder().decode([String].self, from: stringAsData!)
-        data.contents = record.value(forKey: "contents") as? String
-        data.regdate = record.value(forKey: "regdate") as? Date
-
-        return data
-    }
-    
     // 개별 행을 구성하는 메서드
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // workoutList 배열에서 주어진 행에 맞는 데이터를 꺼냄
-        let row = self.fromCoreToWorkoutData(record: self.appDelegate.workoutList[indexPath.row])
+        let row = self.appDelegate.workoutList[indexPath.row]
                 
         // 이미지 속성이 비어 있고 없고에 따라 프로토타입 셀 식별자를 변경
         let cellId = "workoutCell"
@@ -83,7 +71,7 @@ class WorkoutListVC: UITableViewController {
     // 테이블 행을 선택하면 호출되는 메서드
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // workoutList 에서 선택된 행에 맞는 데이터를 꺼냄
-        let row = self.fromCoreToWorkoutData(record: self.appDelegate.workoutList[indexPath.row])
+        let row = self.appDelegate.workoutList[indexPath.row]
         
         // 상세 화면 인스턴스 생성
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "WorkoutRead") as? WorkoutReadVC else {
@@ -97,31 +85,15 @@ class WorkoutListVC: UITableViewController {
     
 
     // MARK: - delete a cell
-    private func delete(object: NSManagedObject) -> Bool {
-        // 관리 객체 컨텍스트 참조
-        let context = self.appDelegate.persistentContainer.viewContext
-        // 컨텍스트로부터 해당 객체 삭제
-        context.delete(object)
-        
-        // 영구 저장소에 커밋
-        do {
-            try context.save()
-            return true
-        } catch {
-            context.rollback()
-            return false
-        }
-    }
-    
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let object = self.appDelegate.workoutList[indexPath.row]
+        let data = self.appDelegate.workoutList[indexPath.row]
         
-        if self.delete(object: object) {
+        if self.appDelegate.dao.delete(data.objectID!) {
             // 코어 데이터에서 삭제되면 배열 목록과 테이블 뷰의 행도 삭제
             self.appDelegate.workoutList.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)

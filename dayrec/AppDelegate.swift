@@ -13,10 +13,9 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data list
-//    var workoutList = [WorkoutData]()
-    lazy var workoutList: [NSManagedObject] = {
-        return self.fetch()
-    }()
+    var workoutList = [WorkoutData]()
+    lazy var dao = WorkoutDAO()
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -72,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 관리 객체 컨텍스트 참조
         let context = self.persistentContainer.viewContext
         // 요청 객체 생성
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Board")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Workout")
         
         // 정렬 속성 설정
         let sort = NSSortDescriptor(key: "regdate", ascending: false)
