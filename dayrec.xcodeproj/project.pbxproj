@@ -3,15 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		033A966F2509F3A000A04CD2 /* AddPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033A966E2509F3A000A04CD2 /* AddPageVC.swift */; };
 		03679AD9250F18B600381BC5 /* WorkoutDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03679AD8250F18B600381BC5 /* WorkoutDAO.swift */; };
+		03679ADB250F2EB000381BC5 /* dayrec.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 03679ADA250F2EB000381BC5 /* dayrec.xcdatamodel */; };
 		03901E4525061E93006C55B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03901E4425061E93006C55B2 /* AppDelegate.swift */; };
 		03901E4725061E93006C55B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03901E4625061E93006C55B2 /* SceneDelegate.swift */; };
-		03901E4A25061E93006C55B2 /* dayrec.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03901E4825061E93006C55B2 /* dayrec.xcdatamodeld */; };
 		03901E4E25061E96006C55B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03901E4D25061E96006C55B2 /* Assets.xcassets */; };
 		03901E5125061E96006C55B2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03901E5025061E96006C55B2 /* Preview Assets.xcassets */; };
 		03901E5425061E96006C55B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03901E5225061E96006C55B2 /* LaunchScreen.storyboard */; };
@@ -27,10 +27,10 @@
 /* Begin PBXFileReference section */
 		033A966E2509F3A000A04CD2 /* AddPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageVC.swift; sourceTree = "<group>"; };
 		03679AD8250F18B600381BC5 /* WorkoutDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDAO.swift; sourceTree = "<group>"; };
+		03679ADA250F2EB000381BC5 /* dayrec.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = dayrec.xcdatamodel; path = dayrec.xcdatamodeld/dayrec.xcdatamodel; sourceTree = "<group>"; };
 		03901E4125061E93006C55B2 /* dayrec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dayrec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03901E4425061E93006C55B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03901E4625061E93006C55B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		03901E4925061E93006C55B2 /* dayrec.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dayrec.xcdatamodel; sourceTree = "<group>"; };
 		03901E4D25061E96006C55B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03901E5025061E96006C55B2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		03901E5325061E96006C55B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -91,8 +91,8 @@
 				03901E6925073521006C55B2 /* WorkoutCell.swift */,
 				03901E652507349C006C55B2 /* WorkoutFormVC.swift */,
 				03901E6325073488006C55B2 /* WorkoutReadVC.swift */,
+				03679ADA250F2EB000381BC5 /* dayrec.xcdatamodel */,
 				03901E5525061E96006C55B2 /* Info.plist */,
-				03901E4825061E93006C55B2 /* dayrec.xcdatamodeld */,
 				03901E4F25061E96006C55B2 /* Preview Content */,
 			);
 			path = dayrec;
@@ -112,7 +112,6 @@
 				FFC780243213DDC466E766EB /* Pods-dayrec.debug.xcconfig */,
 				8EAE671B5A725A38CF550AF8 /* Pods-dayrec.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -241,9 +240,9 @@
 			files = (
 				03901E6425073488006C55B2 /* WorkoutReadVC.swift in Sources */,
 				033A966F2509F3A000A04CD2 /* AddPageVC.swift in Sources */,
+				03679ADB250F2EB000381BC5 /* dayrec.xcdatamodel in Sources */,
 				03901E4525061E93006C55B2 /* AppDelegate.swift in Sources */,
 				03901E4725061E93006C55B2 /* SceneDelegate.swift in Sources */,
-				03901E4A25061E93006C55B2 /* dayrec.xcdatamodeld in Sources */,
 				03901E5E25061FB0006C55B2 /* MainViewController.swift in Sources */,
 				03901E6E250735F8006C55B2 /* WorkoutData.swift in Sources */,
 				03901E662507349C006C55B2 /* WorkoutFormVC.swift in Sources */,
@@ -445,19 +444,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		03901E4825061E93006C55B2 /* dayrec.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				03901E4925061E93006C55B2 /* dayrec.xcdatamodel */,
-			);
-			currentVersion = 03901E4925061E93006C55B2 /* dayrec.xcdatamodel */;
-			path = dayrec.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 03901E3925061E93006C55B2 /* Project object */;
 }

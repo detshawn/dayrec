@@ -93,7 +93,7 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
         // 관리 객체 컨텍스트 참조
         let context = appDelegate.persistentContainer.viewContext
         // 관리 객체 생성, 값 설정
-        let object = NSEntityDescription.insertNewObject(forEntityName: "Board", into: context)
+        let object = NSEntityDescription.insertNewObject(forEntityName: "Workout", into: context)
         object.setValue(self.name.text, forKey: "workoutName")
         let workoutTags: [String] = self.tagSelectedListView.tagViews.map({$0.titleLabel?.text as! String})
         let workoutTagsAsString: String = workoutTags.description
