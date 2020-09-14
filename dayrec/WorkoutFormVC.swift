@@ -90,29 +90,16 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
         // 앱 델리개이트 객체 읽기
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-        // 관리 객체 컨텍스트 참조
-        let context = appDelegate.persistentContainer.viewContext
-        // 관리 객체 생성, 값 설정
-        let object = NSEntityDescription.insertNewObject(forEntityName: "Workout", into: context)
-        object.setValue(self.name.text, forKey: "workoutName")
-        let workoutTags: [String] = self.tagSelectedListView.tagViews.map({$0.titleLabel?.text as! String})
-        let workoutTagsAsString: String = workoutTags.description
-        object.setValue(workoutTagsAsString, forKey: "workoutTags")
-        object.setValue(self.contents.text, forKey: "contents")
-        object.setValue(Date(), forKey: "regdate")
+        let data = WorkoutData()
+        data.workoutName = self.name.text
+        data.workoutTags = self.tagSelectedListView.tagViews.map({$0.titleLabel?.text as! String})
+        data.contents = self.contents.text
+        data.regdate = Date()
         
-        // 영구 저장소에 커밋되고 나면 list 프로퍼티에 추가
-        do {
-            try context.save()
-//            appDelegate.workoutList.append(object)
-            appDelegate.workoutList.insert(object, at: 0) // in order to put it in the first row of TableView
-            // 작성폼 화면을 종료하고 이전 화면으로 돌아감
+        if appDelegate.dao.insert(data) {
             self.navigationController?.popViewController(animated: true)
-            
-        } catch {
-            context.rollback()
+        } else {
             alertMessage(message: "저장에 실패했습니다")
-            return
         }
     }
 }

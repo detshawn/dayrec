@@ -13,10 +13,9 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data list
-//    var workoutList = [WorkoutData]()
-    lazy var workoutList: [NSManagedObject] = {
-        return self.fetch()
-    }()
+    var workoutList = [WorkoutData]()
+    lazy var dao = WorkoutDAO()
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

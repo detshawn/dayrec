@@ -43,7 +43,7 @@ class WorkoutDAO {
         let object = NSEntityDescription.insertNewObject(forEntityName: "Workout", into: self.context) as! WorkoutMO
         
         // copy the values
-        object.workoutIdx = data.workoutIdx!
+        object.workoutIdx = data.workoutIdx ?? -1
         object.workoutName = data.workoutName
         object.workoutTags = data.workoutTags?.description
         object.contents = data.contents
@@ -54,6 +54,7 @@ class WorkoutDAO {
             try self.context.save()
             return true
         } catch let e as NSError {
+            self.context.rollback()
             NSLog("An error has occurred: %s", e.localizedDescription)
             return false
         }
