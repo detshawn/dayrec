@@ -6,4 +6,12 @@
 //  Copyright © 2020 Shawn. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import CoreData
+
+class WorkoutDAO {
+    lazy var context: NSManagedObjectContext = {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }()
+}
