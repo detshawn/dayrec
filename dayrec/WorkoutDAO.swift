@@ -60,6 +60,27 @@ class WorkoutDAO {
         }
     }
     
+    func edit(objectID: NSManagedObjectID, data: WorkoutData) -> Bool {
+        let object = self.context.object(with: objectID) as! WorkoutMO
+        
+        // copy the values
+        object.workoutIdx = data.workoutIdx ?? -1
+        object.workoutName = data.workoutName
+        object.workoutTags = data.workoutTags?.description
+        object.contents = data.contents
+        object.regdate = data.regdate
+        
+        // apply the changes into the persistent storage
+        do {
+            try self.context.save()
+            return true
+        } catch let e as NSError {
+            self.context.rollback()
+            NSLog("An error has occurred: %s", e.localizedDescription)
+            return false
+        }
+    }
+    
     func delete(_ objectID: NSManagedObjectID) -> Bool {
         // find and delete the target object
         let object = self.context.object(with: objectID)
@@ -70,6 +91,7 @@ class WorkoutDAO {
             try self.context.save()
             return true
         } catch let e as NSError {
+            self.context.rollback()
             NSLog("An error has occurred: %s", e.localizedDescription)
             return false
         }

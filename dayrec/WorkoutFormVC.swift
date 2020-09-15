@@ -10,8 +10,18 @@ import UIKit
 import TagListView
 import CoreData
 
+enum FormStatus {
+    case add, edit
+}
+
 class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
-    
+
+    var param: WorkoutData?
+    var status: FormStatus?
+    lazy var defaultTags: Array<String> = {
+        return ["chest", "core", "back", "legs", "shoulders", "triceps", "biceps"]
+    }()
+
     @IBOutlet var name: UITextView!
     @IBOutlet var contents: UITextView!
     @IBOutlet var tagSelectedListView: TagListView!
@@ -20,13 +30,32 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
     let systemTagColor = UIColor.systemGreen
     
     override func viewDidLoad() {
+        initUI()
+    }
+    
+    func initUI() {
         self.name.delegate = self
         self.contents.delegate = self
         self.tagSelectedListView.delegate = self
         self.tagAllListView.delegate = self
         
-        self.tagAllListView.addTags(["chest", "core", "back", "legs", "shoulders", "triceps", "biceps"])
+        // if given the param, load the contents from param
+        if param !== nil {
+            self.name.text = param?.workoutName
+            self.contents.text = param?.contents
+            self.tagSelectedListView.addTags((param?.workoutTags)!)
+            let symDiff = Set(defaultTags).symmetricDifference(Set(param?.workoutTags ?? [String]()))
+            self.tagAllListView.addTags(Array(symDiff))
+            
+        } else {
+            self.tagAllListView.addTags(defaultTags)
+        }
         
+        if self.status == nil {
+            self.status = .add
+        }
+        
+        // set the cursor at the top text
         self.name.becomeFirstResponder()
     }
     
@@ -96,10 +125,26 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
         data.contents = self.contents.text
         data.regdate = Date()
         
-        if appDelegate.dao.insert(data) {
-            self.navigationController?.popViewController(animated: true)
-        } else {
-            alertMessage(message: "저장에 실패했습니다")
+        switch self.status {
+        case .add:
+            if appDelegate.dao.insert(data) {
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                alertMessage(message: "저장에 실패했습니다")
+            }
+        case .edit:
+            if appDelegate.dao.edit(objectID: self.param!.objectID!, data: data) {
+                let controllers = self.navigationController?.viewControllers
+                for vc in controllers! {
+                    if vc is WorkoutListVC {
+                        self.navigationController?.popToViewController(vc as! WorkoutListVC, animated: true)
+                    }
+                }
+            } else {
+                alertMessage(message: "저장에 실패했습니다")
+            }
+        default:
+            print("Wrong status!: %s", self.status.debugDescription)
         }
     }
 }
