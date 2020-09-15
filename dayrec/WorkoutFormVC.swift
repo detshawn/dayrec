@@ -12,6 +12,9 @@ import CoreData
 
 class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
     
+    lazy var defaultTags: Array<String> = {
+        return ["chest", "core", "back", "legs", "shoulders", "triceps", "biceps"]
+    }()
     @IBOutlet var name: UITextView!
     @IBOutlet var contents: UITextView!
     @IBOutlet var tagSelectedListView: TagListView!
@@ -25,7 +28,7 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
         self.tagSelectedListView.delegate = self
         self.tagAllListView.delegate = self
         
-        self.tagAllListView.addTags(["chest", "core", "back", "legs", "shoulders", "triceps", "biceps"])
+        self.tagAllListView.addTags(defaultTags)
         
         self.name.becomeFirstResponder()
     }
