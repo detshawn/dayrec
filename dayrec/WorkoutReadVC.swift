@@ -24,6 +24,8 @@ class WorkoutReadVC: UIViewController {
     func initUI() {
         self.subject.text = param?.workoutName
         self.contents.text = param?.contents
+        self.workoutTags.textFont = UIFont.systemFont(ofSize: 16)
+
         self.workoutTags.addTags((param?.workoutTags)!)
 
         // 날짜 포멧 변환

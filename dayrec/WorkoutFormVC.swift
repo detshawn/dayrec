@@ -39,6 +39,9 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
         self.tagSelectedListView.delegate = self
         self.tagAllListView.delegate = self
         
+        self.tagSelectedListView.textFont = UIFont.systemFont(ofSize: 20)
+        self.tagAllListView.textFont = UIFont.systemFont(ofSize: 20)
+
         // if given the param, load the contents from param
         if param !== nil {
             self.name.text = param?.workoutName
