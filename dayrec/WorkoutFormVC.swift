@@ -55,8 +55,20 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
             self.status = .add
         }
         
+        // it looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        
+        // add the gap recognizer
+        view.addGestureRecognizer(tap)
+        
         // set the cursor at the top text
         self.name.becomeFirstResponder()
+    }
+    
+    // MARK:- dismissing keyboard
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     // MARK:- UITextViewDelegate
