@@ -134,7 +134,12 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
             }
         case .edit:
             if appDelegate.dao.edit(objectID: self.param!.objectID!, data: data) {
-                self.navigationController?.popViewController(animated: true)
+                let controllers = self.navigationController?.viewControllers
+                for vc in controllers! {
+                    if vc is WorkoutListVC {
+                        self.navigationController?.popToViewController(vc as! WorkoutListVC, animated: true)
+                    }
+                }
             } else {
                 alertMessage(message: "저장에 실패했습니다")
             }
