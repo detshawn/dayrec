@@ -23,6 +23,10 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
     let systemTagColor = UIColor.systemGreen
     
     override func viewDidLoad() {
+        initUI()
+    }
+    
+    func initUI() {
         self.name.delegate = self
         self.contents.delegate = self
         self.tagSelectedListView.delegate = self
@@ -30,6 +34,7 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
         
         self.tagAllListView.addTags(defaultTags)
         
+        // set the cursor at the top text
         self.name.becomeFirstResponder()
     }
     
