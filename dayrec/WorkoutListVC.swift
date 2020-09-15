@@ -15,13 +15,25 @@ class WorkoutListVC: UITableViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        self.initUI()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    func initUI() {
+        // navigation bar UI
+        self.navigationItem.leftBarButtonItem = self.editButtonItem // edit button
+    }
+    
+    @objc func editing(_ sender: Any) {
+        self.tableView.setEditing(true, animated: true)
+        
+        // 셀을 스와이프했을 때 해당 셀만 편집 모드가 되도록 설정
+        self.tableView.allowsSelectionDuringEditing = true
     }
     
     //  뷰가 화면에 출력되면 호출
