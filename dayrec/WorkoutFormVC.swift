@@ -10,8 +10,18 @@ import UIKit
 import TagListView
 import CoreData
 
+enum FormStatus {
+    case add, edit
+}
+
 class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
-    
+
+    var param: WorkoutData?
+    var status: FormStatus?
+    lazy var defaultTags: Array<String> = {
+        return ["chest", "core", "back", "legs", "shoulders", "triceps", "biceps"]
+    }()
+
     @IBOutlet var name: UITextView!
     @IBOutlet var contents: UITextView!
     @IBOutlet var tagSelectedListView: TagListView!
@@ -20,13 +30,32 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
     let systemTagColor = UIColor.systemGreen
     
     override func viewDidLoad() {
+        initUI()
+    }
+    
+    func initUI() {
         self.name.delegate = self
         self.contents.delegate = self
         self.tagSelectedListView.delegate = self
         self.tagAllListView.delegate = self
         
-        self.tagAllListView.addTags(["chest", "core", "back", "legs", "shoulders", "triceps", "biceps"])
+        // if given the param, load the contents from param
+        if param !== nil {
+            self.name.text = param?.workoutName
+            self.contents.text = param?.contents
+            self.tagSelectedListView.addTags((param?.workoutTags)!)
+            let symDiff = Set(defaultTags).symmetricDifference(Set(param?.workoutTags ?? [String]()))
+            self.tagAllListView.addTags(Array(symDiff))
+            
+        } else {
+            self.tagAllListView.addTags(defaultTags)
+        }
         
+        if self.status == nil {
+            self.status = .add
+        }
+        
+        // set the cursor at the top text
         self.name.becomeFirstResponder()
     }
     
@@ -90,29 +119,32 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
         // 앱 델리개이트 객체 읽기
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-        // 관리 객체 컨텍스트 참조
-        let context = appDelegate.persistentContainer.viewContext
-        // 관리 객체 생성, 값 설정
-        let object = NSEntityDescription.insertNewObject(forEntityName: "Board", into: context)
-        object.setValue(self.name.text, forKey: "workoutName")
-        let workoutTags: [String] = self.tagSelectedListView.tagViews.map({$0.titleLabel?.text as! String})
-        let workoutTagsAsString: String = workoutTags.description
-        object.setValue(workoutTagsAsString, forKey: "workoutTags")
-        object.setValue(self.contents.text, forKey: "contents")
-        object.setValue(Date(), forKey: "regdate")
+        let data = WorkoutData()
+        data.workoutName = self.name.text
+        data.workoutTags = self.tagSelectedListView.tagViews.map({$0.titleLabel?.text as! String})
+        data.contents = self.contents.text
+        data.regdate = Date()
         
-        // 영구 저장소에 커밋되고 나면 list 프로퍼티에 추가
-        do {
-            try context.save()
-//            appDelegate.workoutList.append(object)
-            appDelegate.workoutList.insert(object, at: 0) // in order to put it in the first row of TableView
-            // 작성폼 화면을 종료하고 이전 화면으로 돌아감
-            self.navigationController?.popViewController(animated: true)
-            
-        } catch {
-            context.rollback()
-            alertMessage(message: "저장에 실패했습니다")
-            return
+        switch self.status {
+        case .add:
+            if appDelegate.dao.insert(data) {
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                alertMessage(message: "저장에 실패했습니다")
+            }
+        case .edit:
+            if appDelegate.dao.edit(objectID: self.param!.objectID!, data: data) {
+                let controllers = self.navigationController?.viewControllers
+                for vc in controllers! {
+                    if vc is WorkoutListVC {
+                        self.navigationController?.popToViewController(vc as! WorkoutListVC, animated: true)
+                    }
+                }
+            } else {
+                alertMessage(message: "저장에 실패했습니다")
+            }
+        default:
+            print("Wrong status!: %s", self.status.debugDescription)
         }
     }
 }

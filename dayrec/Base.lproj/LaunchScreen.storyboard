@@ -153,7 +153,7 @@
         <!--상세 작성-->
         <scene sceneID="7WY-Ch-3kb">
             <objects>
-                <viewController id="u7e-6D-5zg" customClass="WorkoutFormVC" customModule="dayrec" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WorkoutForm" id="u7e-6D-5zg" customClass="WorkoutFormVC" customModule="dayrec" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R68-S5-uFs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -322,7 +322,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="DxJ-E8-egC" kind="relationship" relationship="viewControllers" id="ijW-4r-0GX"/>
+                        <segue destination="ebj-GQ-thm" kind="relationship" relationship="viewControllers" id="DPa-9x-bFn"/>
                         <segue destination="W9K-Vl-eRV" kind="relationship" relationship="viewControllers" id="Y8q-1s-sIf"/>
                         <segue destination="TCQ-hP-cdF" kind="relationship" relationship="viewControllers" id="Xtt-32-HZx"/>
                     </connections>
