@@ -18,6 +18,10 @@ class WorkoutReadVC: UIViewController {
     @IBOutlet var workoutTags: TagListView!
     
     override func viewDidLoad() {
+        initUI()
+    }
+    
+    func initUI() {
         self.subject.text = param?.workoutName
         self.contents.text = param?.contents
         self.workoutTags.addTags((param?.workoutTags)!)
@@ -29,6 +33,9 @@ class WorkoutReadVC: UIViewController {
 
         // 내비게이션 타이틀에 날짜 표시
         self.navigationItem.title = dateString
+
+        // set the button in the top-right corner
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(btnOnClick(_:)))
     }
     
 
