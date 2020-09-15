@@ -19,7 +19,7 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
     var param: WorkoutData?
     var status: FormStatus?
     lazy var defaultTags: Array<String> = {
-        return ["chest", "core", "back", "legs", "shoulders", "triceps", "biceps"]
+        return ["chest", "core", "back", "legs", "shoulders", "triceps", "biceps", "cardio"]
     }()
 
     @IBOutlet var name: UITextView!
@@ -51,7 +51,7 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
             self.tagAllListView.addTags(Array(symDiff))
             
         } else {
-            self.tagAllListView.addTags(defaultTags)
+            self.tagAllListView.addTags(self.defaultTags)
         }
         
         if self.status == nil {
