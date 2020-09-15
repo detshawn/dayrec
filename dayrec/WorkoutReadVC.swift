@@ -37,8 +37,20 @@ class WorkoutReadVC: UIViewController {
         // set the button in the top-right corner
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(btnOnClick(_:)))
     }
-    
 
+    @objc func btnOnClick(_ sender: Any) {
+        if let btn = sender as? UIBarButtonItem {
+            // 상세 화면 인스턴스 생성
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "WorkoutForm") as? WorkoutFormVC else {
+                return
+            }
+            
+            // 값을 전달한 다음 상세 화면으로 이동
+            vc.param = self.param
+            vc.status = .edit
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     /*
     // MARK: - Navigation
 
