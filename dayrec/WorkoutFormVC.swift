@@ -11,7 +11,8 @@ import TagListView
 import CoreData
 
 class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
-    
+
+    var param: WorkoutData?
     lazy var defaultTags: Array<String> = {
         return ["chest", "core", "back", "legs", "shoulders", "triceps", "biceps"]
     }()
@@ -32,7 +33,17 @@ class WorkoutFormVC: UIViewController, UITextViewDelegate, TagListViewDelegate {
         self.tagSelectedListView.delegate = self
         self.tagAllListView.delegate = self
         
-        self.tagAllListView.addTags(defaultTags)
+        // if given the param, load the contents from param
+        if param !== nil {
+            self.name.text = param?.workoutName
+            self.contents.text = param?.contents
+            self.tagSelectedListView.addTags((param?.workoutTags)!)
+            let symDiff = Set(defaultTags).symmetricDifference(Set(param?.workoutTags ?? [String]()))
+            self.tagAllListView.addTags(Array(symDiff))
+            
+        } else {
+            self.tagAllListView.addTags(defaultTags)
+        }
         
         // set the cursor at the top text
         self.name.becomeFirstResponder()
